@@ -1,0 +1,140 @@
+mysql> use united;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table class_a(id int primary key, name varchar(30) not null, marks tinyint not null);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into class_a values(1,"vaishnavi",100),(2,"keerthana",99);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from class_a;
++----+-----------+-------+
+| id | name      | marks |
++----+-----------+-------+
+|  1 | vaishnavi |   100 |
+|  2 | keerthana |    99 |
++----+-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into_a values(3,"meenusowjanya",98),(4,"suguram",97),(5,"pavan",96);
+ERROR 1146 (42S02): Table 'united.into_a' doesn't exist
+mysql> insert into class_a values(3,"meenusowjanya",98),(4,"suguram",97),(5,"pavan"
+,96);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from class_a;
++----+---------------+-------+
+| id | name          | marks |
++----+---------------+-------+
+|  1 | vaishnavi     |   100 |
+|  2 | keerthana     |    99 |
+|  3 | meenusowjanya |    98 |
+|  4 | suguram       |    97 |
+|  5 | pavan         |    96 |
++----+---------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create table class_b (id int primary key, name varchar(30) not null, marks tinyint not null);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into class_b values(1,"vaishnavi",100),(2,"keerthana",99),(6,"deepak",95),(7,"kasi",94),(8,"venkat",93);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> selact * from class_b;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selact * from class_b' at line 1
+mysql> desc class_b;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(30) | NO   |     | NULL    |       |
+| marks | tinyint     | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select * from class_b;
++----+-----------+-------+
+| id | name      | marks |
++----+-----------+-------+
+|  1 | vaishnavi |   100 |
+|  2 | keerthana |    99 |
+|  6 | deepak    |    95 |
+|  7 | kasi      |    94 |
+|  8 | venkat    |    93 |
++----+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from class_a inner join class_b on class_a.id = class_b.id;
++----+-----------+-------+----+-----------+-------+
+| id | name      | marks | id | name      | marks |
++----+-----------+-------+----+-----------+-------+
+|  1 | vaishnavi |   100 |  1 | vaishnavi |   100 |
+|  2 | keerthana |    99 |  2 | keerthana |    99 |
++----+-----------+-------+----+-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from class_a right join class_b on class_a.id = class_b.id;
++------+-----------+-------+----+-----------+-------+
+| id   | name      | marks | id | name      | marks |
++------+-----------+-------+----+-----------+-------+
+|    1 | vaishnavi |   100 |  1 | vaishnavi |   100 |
+|    2 | keerthana |    99 |  2 | keerthana |    99 |
+| NULL | NULL      |  NULL |  6 | deepak    |    95 |
+| NULL | NULL      |  NULL |  7 | kasi      |    94 |
+| NULL | NULL      |  NULL |  8 | venkat    |    93 |
++------+-----------+-------+----+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from class_a left join class_b on class_a.id = class_b.id;
++----+---------------+-------+------+-----------+-------+
+| id | name          | marks | id   | name      | marks |
++----+---------------+-------+------+-----------+-------+
+|  1 | vaishnavi     |   100 |    1 | vaishnavi |   100 |
+|  2 | keerthana     |    99 |    2 | keerthana |    99 |
+|  3 | meenusowjanya |    98 | NULL | NULL      |  NULL |
+|  4 | suguram       |    97 | NULL | NULL      |  NULL |
+|  5 | pavan         |    96 | NULL | NULL      |  NULL |
++----+---------------+-------+------+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from class_a left join class_b;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select * from class_a cross join class_b;
++----+---------------+-------+----+-----------+-------+
+| id | name          | marks | id | name      | marks |
++----+---------------+-------+----+-----------+-------+
+|  5 | pavan         |    96 |  1 | vaishnavi |   100 |
+|  4 | suguram       |    97 |  1 | vaishnavi |   100 |
+|  3 | meenusowjanya |    98 |  1 | vaishnavi |   100 |
+|  2 | keerthana     |    99 |  1 | vaishnavi |   100 |
+|  1 | vaishnavi     |   100 |  1 | vaishnavi |   100 |
+|  5 | pavan         |    96 |  2 | keerthana |    99 |
+|  4 | suguram       |    97 |  2 | keerthana |    99 |
+|  3 | meenusowjanya |    98 |  2 | keerthana |    99 |
+|  2 | keerthana     |    99 |  2 | keerthana |    99 |
+|  1 | vaishnavi     |   100 |  2 | keerthana |    99 |
+|  5 | pavan         |    96 |  6 | deepak    |    95 |
+|  4 | suguram       |    97 |  6 | deepak    |    95 |
+|  3 | meenusowjanya |    98 |  6 | deepak    |    95 |
+|  2 | keerthana     |    99 |  6 | deepak    |    95 |
+|  1 | vaishnavi     |   100 |  6 | deepak    |    95 |
+|  5 | pavan         |    96 |  7 | kasi      |    94 |
+|  4 | suguram       |    97 |  7 | kasi      |    94 |
+|  3 | meenusowjanya |    98 |  7 | kasi      |    94 |
+|  2 | keerthana     |    99 |  7 | kasi      |    94 |
+|  1 | vaishnavi     |   100 |  7 | kasi      |    94 |
+|  5 | pavan         |    96 |  8 | venkat    |    93 |
+|  4 | suguram       |    97 |  8 | venkat    |    93 |
+|  3 | meenusowjanya |    98 |  8 | venkat    |    93 |
+|  2 | keerthana     |    99 |  8 | venkat    |    93 |
+|  1 | vaishnavi     |   100 |  8 | venkat    |    93 |
++----+---------------+-------+----+-----------+-------+
+25 rows in set (0.00 sec)
+
+mysql> 
+
