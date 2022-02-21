@@ -1,5 +1,5 @@
 # vaishnavi.paramathma__lab
-mysql> show databases;
+``` show databases;```
                     
 | Database           |
 |:------------------:|
@@ -10,8 +10,8 @@ mysql> show databases;
 | sys                |
 | united             |
 
-mysql> use united;
-mysql> show tables;
+``` use united;```
+``` show tables;```
 
 | Tables_in_united |
 |:----------------:|
@@ -21,7 +21,7 @@ mysql> show tables;
 | uSquare          |
 | vegetable        |
 
-mysql> desc vegetable;
+ ```desc vegetable;```
 
 | Field  | Type        | Null | Key | Default | Extra          |
 |:------:|:------------|:-----|:----|:--------|:--------------:|
@@ -32,7 +32,7 @@ mysql> desc vegetable;
 | weight | int         | YES  |     | NULL    |                |
 
 
-mysql> select * from vegetable;
+``` select * from vegetable;```
 
 | id | name         | color  | price | weight |
 |:--:|:------------:|:------:|:-----:|:------:|
@@ -47,24 +47,24 @@ mysql> select 3+3;
 |   6 |
 
 
-mysql> select 4-3,4*3,4/3,4%2;
+``` select 4-3,4*3,4/3,4%2;```
 
 | 4-3 | 4*3 | 4/3    | 4%2  |
 |:---:|:---:|:------:|:----:|
 |   1 |  12 | 1.3333 |    0 |
 
-mysql> use united;
+ ```use united;```
 
-mysql> use uSquare;
+ ```use uSquare;```
 
-mysql> create table aspirants(id tinyint primary key , fName varchar(20) not null , lName varchar(20) , age tinyint check(age>=1));
+``` create table aspirants(id tinyint primary key , fName varchar(20) not null , lName varchar(20) , age tinyint check(age>=1));```
 
 
-mysql> create table tendots(id tinyint primary key , fName varchar(20) not null , lName varchar(20) , age check(age>=1));
+ ```create table tendots(id tinyint primary key , fName varchar(20) not null , lName varchar(20) , age check(age>=1));```
 
-mysql> create table tendots(id tinyint primary key , fName varchar(20) not null , lName varchar(20) , age tinyint check(age>=1));
+ ```create table tendots(id tinyint primary key , fName varchar(20) not null , lName varchar(20) , age tinyint check(age>=1));```
 
-mysql> desc aspirants;
+ ```desc aspirants;```
 
 | Field | Type        | Null | Key | Default | Extra |
 |:-----:|:-----------:|:----:|:---:|:-------:|:-----:|
