@@ -24,7 +24,7 @@ mysql> show tables;
 mysql> desc vegetable;
 
 | Field  | Type        | Null | Key | Default | Extra          |
-|:------:|:------------|:-----|:----|:--------|:---------------|
+|:------:|:------------|:-----|:----|:--------|:--------------:|
 | id     | tinyint     | NO   | PRI | NULL    | auto_increment |
 | name   | varchar(30) | NO   |     | NULL    |                |
 | color  | varchar(20) | YES  |     | NULL    |                |
