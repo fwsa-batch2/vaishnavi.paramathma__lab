@@ -2,14 +2,14 @@
 mysql> show databases;
 +                    +
 | Database           |
-+:------------------:+
+|:------------------:|
 | freshworks_academy |
 | information_schema |
 | mysql              |
 | performance_schema |
 | sys                |
 | united             |
-+:------------------:+
+
 6 rows in set (0.00 sec)
 
 mysql> use united;
