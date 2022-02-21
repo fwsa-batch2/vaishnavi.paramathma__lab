@@ -40,7 +40,7 @@
 |  2 | beetroot     | red    |    50 |   NULL |
 |  3 | lady'sfinger | red    |   100 |   NULL |
 
-mysql> select 3+3;
+``` select 3+3;```
 
 | 3+3 |
 |:---:|
@@ -73,7 +73,7 @@ mysql> select 3+3;
 | lName | varchar(20) | YES  |     | NULL    |       |
 | age   | tinyint     | YES  |     | NULL    |       |
 
-mysql> desc tendots;
+``` desc tendots;```
 
 | Field | Type        | Null | Key | Default | Extra |
 |:-----:|:-----------:|:----:|:---:|:-------:|:-----:|
@@ -83,7 +83,7 @@ mysql> desc tendots;
 | age   | tinyint     | YES  |     | NULL    |       |
 
 
-mysql> show tables;
+```show tables;```
 
 | Tables_in_united |
 |:----------------:|
@@ -92,14 +92,14 @@ mysql> show tables;
 | tendots          |
 | uSquare          |
 
-mysql> insert into aspirants value(1,"vaishnavi","paramathma",18);                    
+``` insert into aspirants value(1,"vaishnavi","paramathma",18); ```                   
 
-mysql> insert into aspirants value(2,"keerthana","shanmugam",18),(3,"meenu","sowjanya",18),(4,"kasi","antony",18),(5,"suguram","krishna",19);
+``` insert into aspirants value(2,"keerthana","shanmugam",18),(3,"meenu","sowjanya",18),(4,"kasi","antony",18),(5,"suguram","krishna",19);```
 
 
-mysql> insert into tendots value(1,"poorani","shanmugam",18),(3,"sangeetha","sowjanya",18),(4,"maha","antony",18),(5,"vaishu","krishna",19);
+``` insert into tendots value(1,"poorani","shanmugam",18),(3,"sangeetha","sowjanya",18),(4,"maha","antony",18),(5,"vaishu","krishna",19);```
 
-mysql> select * from aspirants;
+``` select * from aspirants;```
 
 | id | fName     | lName      | age  |
 |:--:|:---------:|:----------:|:----:|
@@ -111,7 +111,7 @@ mysql> select * from aspirants;
 
 
 
-mysql> select * from tendots;
+``` select * from tendots;```
 
 | id | fName     | lName     | age  |
 |:--:|:---------:|:---------:|:----:|
@@ -121,11 +121,11 @@ mysql> select * from tendots;
 |  5 | vaishu    | krishna   |   19 |
 
 
-mysql> delete from aspirants where id=3;
+``` delete from aspirants where id=3;```
 
-mysql> insert into tendots(id ,fName, lName) values(6,"ismail","smile");
+``` insert into tendots(id ,fName, lName) values(6,"ismail","smile");```
 
-mysql> select * from tendots;
+``` select * from tendots;```
 
 | id | fName     | lName     | age  |
 |:--:|:---------:|:---------:|:----:|
@@ -135,8 +135,7 @@ mysql> select * from tendots;
 |  5 | vaishu    | krishna   |   19 |
 |  6 | ismail    | smile     | NULL |
 
-
-mysql> select * from aspirants;
+``` select * from aspirants;```
 
 | id | fName     | lName      | age  |
 |:--:|:---------:|:----------:|:----:|
