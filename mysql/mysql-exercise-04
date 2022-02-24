@@ -1,0 +1,221 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| freshworks_academy |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| united             |
+| vaishnavi          |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use united;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_united |
++------------------+
+| aspirants        |
+| blazers          |
+| class_a          |
+| class_b          |
+| products         |
+| seller           |
+| tendots          |
+| uSquare          |
+| vegetable        |
++------------------+
+9 rows in set (0.01 sec)
+
+mysql> desc vegetable;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | tinyint     | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(30) | NO   | MUL | NULL    |                |
+| color  | varchar(20) | YES  |     | NULL    |                |
+| price  | tinyint     | NO   | MUL | NULL    |                |
+| weight | int         | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> select*from vegetable;
++----+--------------+--------+-------+--------+
+| id | name         | color  | price | weight |
++----+--------------+--------+-------+--------+
+|  1 | carrot       | orange |    50 |   NULL |
+|  2 | beetroot     | red    |    50 |   NULL |
+|  3 | lady'sfinger | red    |   100 |   NULL |
++----+--------------+--------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> create index frsh on vegetable(name);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> create index fwsa on vegetable(color,price,weight);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> create index stds on class_a        
+
+^C
+mysql> select * from class_a;
++----+---------------+-------+
+| id | name          | marks |
++----+---------------+-------+
+|  1 | vaishnavi     |   100 |
+|  2 | keerthana     |    99 |
+|  3 | meenusowjanya |    98 |
+|  4 | suguram       |    97 |
+|  5 | pavan         |    96 |
++----+---------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create index stds on class_a(name)asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asc' at line 1
+mysql> show index from vegetable;
++-----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table     | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| vegetable |          0 | PRIMARY  |            1 | id          | A         |           3 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | in_dex   |            1 | price       | A         |           2 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | test     |            1 | name        | A         |           3 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | test     |            2 | color       | A         |           3 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | test     |            3 | weight      | A         |           3 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | frsh     |            1 | name        | A         |           3 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | fwsa     |            1 | color       | A         |           2 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | fwsa     |            2 | price       | A         |           3 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | fwsa     |            3 | weight      | A         |           3 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+9 rows in set (0.03 sec)
+
+mysql> drop index frsh on vegetable;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from vegetable;
++-----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table     | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| vegetable |          0 | PRIMARY  |            1 | id          | A         |           3 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | in_dex   |            1 | price       | A         |           2 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | test     |            1 | name        | A         |           3 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | test     |            2 | color       | A         |           3 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | test     |            3 | weight      | A         |           3 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | fwsa     |            1 | color       | A         |           2 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | fwsa     |            2 | price       | A         |           3 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| vegetable |          1 | fwsa     |            3 | weight      | A         |           3 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+8 rows in set (0.00 sec)
+
+mysql> ^C
+
+^C
+mysql> create index stds on class_a(name asc);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from vegetable;
++----+--------------+--------+-------+--------+
+| id | name         | color  | price | weight |
++----+--------------+--------+-------+--------+
+|  1 | carrot       | orange |    50 |   NULL |
+|  2 | beetroot     | red    |    50 |   NULL |
+|  3 | lady'sfinger | red    |   100 |   NULL |
++----+--------------+--------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> desc vegetable;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | tinyint     | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(30) | NO   | MUL | NULL    |                |
+| color  | varchar(20) | YES  | MUL | NULL    |                |
+| price  | tinyint     | NO   | MUL | NULL    |                |
+| weight | int         | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table vegetable drop column id;
+Query OK, 3 rows affected (0.11 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from vegetable;
++--------------+--------+-------+--------+
+| name         | color  | price | weight |
++--------------+--------+-------+--------+
+| carrot       | orange |    50 |   NULL |
+| beetroot     | red    |    50 |   NULL |
+| lady'sfinger | red    |   100 |   NULL |
++--------------+--------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> alter table vegetable add id tinyint, not null,primaray key,auto_increment;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null,primaray key,auto_increment' at line 1
+mysql> alter table vegetable add id tinyint, not null,primaray key,auto_increament;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null,primaray key,auto_increament' at line 1
+mysql> alter table vegetable add id tinyint  not null primaray key auto_increament;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primaray key auto_increament' at line 1
+mysql> alter table vegetable add id tinyint  not null primary key auto_increament;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'auto_increament' at line 1
+mysql> alter table vegetable add(id tinyint  not null primary key auto_increament);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'auto_increament)' at line 1
+mysql> alter table vegetable add(id tinyint  not null primary key auto_increment);
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from vegetable;
++--------------+--------+-------+--------+----+
+| name         | color  | price | weight | id |
++--------------+--------+-------+--------+----+
+| carrot       | orange |    50 |   NULL |  1 |
+| beetroot     | red    |    50 |   NULL |  2 |
+| lady'sfinger | red    |   100 |   NULL |  3 |
++--------------+--------+-------+--------+----+
+3 rows in set (0.00 sec)
+
+mysql> select * from class_a;
++----+---------------+-------+
+| id | name          | marks |
++----+---------------+-------+
+|  1 | vaishnavi     |   100 |
+|  2 | keerthana     |    99 |
+|  3 | meenusowjanya |    98 |
+|  4 | suguram       |    97 |
+|  5 | pavan         |    96 |
++----+---------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table class_a drop column id,marks;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'marks' at line 1
+mysql> alter table class_a drop column id;
+Query OK, 5 rows affected (0.09 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> alter table class_a drop column marks;
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from class_a;
++---------------+
+| name          |
++---------------+
+| keerthana     |
+| meenusowjanya |
+| pavan         |
+| suguram       |
+| vaishnavi     |
++---------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+
