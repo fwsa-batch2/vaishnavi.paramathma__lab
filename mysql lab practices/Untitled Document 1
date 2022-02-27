@@ -1,3 +1,0 @@
-ALTER TABLE table_name RENAME(old_column_name TO new_column_name); 
-ALTER TABLE table_name RENAME old_column_name TO new_column_name; THIS IS THE CORRECT ONE 
-ALTER TABLE table_name RENAME old_column_name TO new_column_name; THIS IS THE CORRECT ONE 

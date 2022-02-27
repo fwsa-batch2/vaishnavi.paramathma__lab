@@ -1,0 +1,153 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| freshworks_academy |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| united             |
+| vaishnavi          |
++--------------------+
+7 rows in set (0.01 sec)
+
+mysql> use united;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_united |
++------------------+
+| aspirants        |
+| blazers          |
+| class_a          |
+| class_b          |
+| products         |
+| seller           |
+| tendots          |
+| uSquare          |
+| vegetable        |
++------------------+
+9 rows in set (0.01 sec)
+
+mysql> select * from class_a;
++---------------+
+| name          |
++---------------+
+| keerthana     |
+| meenusowjanya |
+| pavan         |
+| suguram       |
+| vaishnavi     |
++---------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from class_b;
++----+-----------+-------+
+| id | name      | marks |
++----+-----------+-------+
+|  1 | vaishnavi |   100 |
+|  2 | keerthana |    99 |
+|  6 | deepak    |    95 |
+|  7 | kasi      |    94 |
+|  8 | venkat    |    93 |
++----+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from class_b order by name asc;
++----+-----------+-------+
+| id | name      | marks |
++----+-----------+-------+
+|  6 | deepak    |    95 |
+|  7 | kasi      |    94 |
+|  2 | keerthana |    99 |
+|  1 | vaishnavi |   100 |
+|  8 | venkat    |    93 |
++----+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from class_b order by name desc;
++----+-----------+-------+
+| id | name      | marks |
++----+-----------+-------+
+|  8 | venkat    |    93 |
+|  1 | vaishnavi |   100 |
+|  2 | keerthana |    99 |
+|  7 | kasi      |    94 |
+|  6 | deepak    |    95 |
++----+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from class_b order by marks desc;
++----+-----------+-------+
+| id | name      | marks |
++----+-----------+-------+
+|  1 | vaishnavi |   100 |
+|  2 | keerthana |    99 |
+|  6 | deepak    |    95 |
+|  7 | kasi      |    94 |
+|  8 | venkat    |    93 |
++----+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from class_b order by marks asc;
++----+-----------+-------+
+| id | name      | marks |
++----+-----------+-------+
+|  8 | venkat    |    93 |
+|  7 | kasi      |    94 |
+|  6 | deepak    |    95 |
+|  2 | keerthana |    99 |
+|  1 | vaishnavi |   100 |
++----+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select count(marks),name from class_b group by name;
++--------------+-----------+
+| count(marks) | name      |
++--------------+-----------+
+|            1 | vaishnavi |
+|            1 | keerthana |
+|            1 | deepak    |
+|            1 | kasi      |
+|            1 | venkat    |
++--------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select count(marks),name from class_b group by name having name="vaishnavi" or name="keerthana";
++--------------+-----------+
+| count(marks) | name      |
++--------------+-----------+
+|            1 | vaishnavi |
+|            1 | keerthana |
++--------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select count(marks),name from class_b group by name having like="%i";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like="%i"' at line 1
+mysql> select count(marks),name from class_b group by name having like "%i";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like "%i"' at line 1
+mysql> select count(marks),name from class_b group by name having name like "%i";
++--------------+-----------+
+| count(marks) | name      |
++--------------+-----------+
+|            1 | vaishnavi |
+|            1 | kasi      |
++--------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select distinct(name) from class_b;
++-----------+
+| name      |
++-----------+
+| vaishnavi |
+| keerthana |
+| deepak    |
+| kasi      |
+| venkat    |
++-----------+
+5 rows in set (0.01 sec)
+
