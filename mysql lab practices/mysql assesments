@@ -1,0 +1,253 @@
+use usquare_school;
+mysql> create table students_list(id int primary key auto_increment,
+    -> name varchar(100) not null,
+    -> email varchar(100) not null,
+    -> mobile_no bigint not null,
+    -> password varchar(100) not null,
+    -> gender char(1) not null,
+    -> dob date,
+    -> created_date timestamp not null default current_timestamp,
+    -> unique (email),
+    -> check ( gender in ('M','F'))
+    -> );
+    mysql> desc students_list;
++--------------+--------------+------+-----+-------------------+-------------------+
+| Field        | Type         | Null | Key | Default           | Extra             |
++--------------+--------------+------+-----+-------------------+-------------------+
+| id           | int          | NO   | PRI | NULL              | auto_increment    |
+| name         | varchar(100) | NO   |     | NULL              |                   |
+| email        | varchar(100) | NO   | UNI | NULL              |                   |
+| mobile_no    | bigint       | NO   |     | NULL              |                   |
+| password     | varchar(100) | NO   |     | NULL              |                   |
+| gender       | char(1)      | NO   |     | NULL              |                   |
+| dob          | date         | YES  |     | NULL              |                   |
+| created_date | timestamp    | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++--------------+--------------+------+-----+-------------------+-------------------+
+8 rows in set (0.01 sec)
+
+mysql> create table student_class(id int primary key auto_increment, student_id int not null, class int not null, status varchar(20) not null, foreign key (student_id) references students_list(id), check( class >= 1 and class <=12), check (status in ('ACTIVE','INACTIVE')) );
+
+mysql> desc student_class;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int         | NO   | PRI | NULL    | auto_increment |
+| student_id | int         | NO   | MUL | NULL    |                |
+| class      | int         | NO   |     | NULL    |                |
+| status     | varchar(20) | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+
+feature 1 => Student Registration
+
+mysql> insert into students_list values(1,"vaishnavi","vaish@gmail.com",123456,"vvaaii","F","2003-08-22",now());
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into students_list values(2,"abi","abi@gmail.com",1234561,"aabbii","M","2003-08-13",now());
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into students_list values(3,"keerthana","keerthana@gmail.com",345612,"kkeerr","F","2003-09-10",now());
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into students_list values(4,"cyrus","cyrus@gmail.com",456123,"ccyyrr","M","2021-08-14",now());
+Query OK, 1 row affected (0.01 sec)
+
+
+  Feature 2: List All Students
+  
+mysql> select * from students_list;
++----+-----------+---------------------+-----------+----------+--------+------------+---------------------+
+| id | name      | email               | mobile_no | password | gender | dob        | created_date        |
++----+-----------+---------------------+-----------+----------+--------+------------+---------------------+
+|  1 | vaishnavi | vaish@gmail.com     |    123456 | vvaaii   | F      | 2003-08-22 | 2022-03-02 12:16:22 |
+|  2 | abi       | abi@gmail.com       |   1234561 | aabbii   | M      | 2003-08-13 | 2022-03-02 12:18:32 |
+|  3 | keerthana | keerthana@gmail.com |    345612 | kkeerr   | F      | 2003-09-10 | 2022-03-02 12:21:17 |
+|  4 | cyrus     | cyrus@gmail.com     |    456123 | ccyyrr   | M      | 2021-08-14 | 2022-03-02 12:23:12 |
++----+-----------+---------------------+-----------+----------+--------+------------
+
+
+Feature 3: Login with email and password
+
+mysql> select email, password from students_list;
++---------------------+----------+
+| email               | password |
++---------------------+----------+
+| vaish@gmail.com     | vvaaii   |
+| abi@gmail.com       | aabbii   |
+| keerthana@gmail.com | kkeerr   |
+| cyrus@gmail.com     | ccyyrr   |
++---------------------+----------+
+
+
+Feature 4: Update Password
+
+mysql> update students_list set password="greenary" where id=1;
+mysql> select email,password from students_list;
++---------------------+----------+
+| email               | password |
++---------------------+----------+
+| vaish@gmail.com     | greenary |
+| abi@gmail.com       | aabbii   |
+| keerthana@gmail.com | kkeerr   |
+| cyrus@gmail.com     | ccyyrr   |
++---------------------+----------+
+
+
+feature=>5 enroll student into class
+
+mysql> insert into student_class values (1,1,5,"active"),(2,2,6,"inactive"),(3,3,7,"active"),(4,4,5,"active");
+
+
+Feature 6: Find Students who are enrolled in the given class
+
+mysql> select * from student_class;
++----+------------+-------+----------+
+| id | student_id | class | status   |
++----+------------+-------+----------+
+|  1 |          1 |     5 | active   |
+|  2 |          2 |     6 | inactive |
+|  3 |          3 |     7 | active   |
+|  4 |          4 |     5 | active   |
++----+------------+-------+----------+
+
+mysql> select * from student_class where class=5;
++----+------------+-------+--------+
+| id | student_id | class | status |
++----+------------+-------+--------+
+|  1 |          1 |     5 | active |
+|  4 |          4 |     5 | active |
++----+------------+-------+--------+
+
+
+ Feature 7: Update Student Class information
+ 
+mysql> update student_class set class=6 where id=1;
+mysql> select * from student_class;
++----+------------+-------+----------+
+| id | student_id | class | status   |
++----+------------+-------+----------+
+|  1 |          1 |     6 | active   |
+|  2 |          2 |     6 | inactive |
+|  3 |          3 |     7 | active   |
+|  4 |          4 |     5 | active   |
++----+------------+-------+----------+
+
+
+Feature 8: Student withdrawn from a Class
+
+mysql> delete from student_class where id=2;
+
+mysql> select * from student_class;
++----+------------+-------+--------+
+| id | student_id | class | status |
++----+------------+-------+--------+
+|  1 |          1 |     6 | active |
+|  3 |          3 |     7 | active |
+|  4 |          4 |     5 | active |
++----+------------+-------+--------+
+
+
+Feature 9: Find student details who have not updated their Date Of Birth #
+
+mysql> select * from students_list where dob = null;
+Empty set (0.00 sec)
+
+
+Feature 11: Find Total no of students actively studying in this class
+
+mysql> select count(*),class from student_class where status="active" group by class;
++----------+-------+
+| count(*) | class |
++----------+-------+
+|        1 |     6 |
+|        1 |     7 |
+|        1 |     5 |
++----------+-------+
+
+
+Feature 10: Find Total no of students actively studying in this school
+
+mysql> select count(*)from student_class where status="active";
++----------+
+| count(*) |
++----------+
+|        3 |
++----------+
+1 row in set (0.00 sec)
+
+
+Feature 12: Find Total no of students actively studying each class which has less than 5 students.
+
+mysql> select count(*),class from student_class where status="active" group by class having count(*)<5;
++----------+-------+
+| count(*) | class |
++----------+-------+
+|        1 |     6 |
+|        1 |     7 |
+|        1 |     5 |
++----------+-------+
+
+
+Feature 13: Display student and class details #
+
+mysql> select * from students_list inner join student_class;
++----+-----------+---------------------+-----------+----------+--------+------------+---------------------+----+------------+-------+--------+
+| id | name      | email               | mobile_no | password | gender | dob        | created_date        | id | student_id | class | status |
++----+-----------+---------------------+-----------+----------+--------+------------+---------------------+----+------------+-------+--------+
+|  1 | vaishnavi | vaish@gmail.com     |    123456 | greenary | F      | 2003-08-22 | 2022-03-02 12:16:22 |  4 |          4 |     5 | active |
+|  1 | vaishnavi | vaish@gmail.com     |    123456 | greenary | F      | 2003-08-22 | 2022-03-02 12:16:22 |  3 |          3 |     7 | active |
+|  1 | vaishnavi | vaish@gmail.com     |    123456 | greenary | F      | 2003-08-22 | 2022-03-02 12:16:22 |  1 |          1 |     6 | active |
+|  2 | abi       | abi@gmail.com       |   1234561 | aabbii   | M      | 2003-08-13 | 2022-03-02 12:18:32 |  4 |          4 |     5 | active |
+|  2 | abi       | abi@gmail.com       |   1234561 | aabbii   | M      | 2003-08-13 | 2022-03-02 12:18:32 |  3 |          3 |     7 | active |
+|  2 | abi       | abi@gmail.com       |   1234561 | aabbii   | M      | 2003-08-13 | 2022-03-02 12:18:32 |  1 |          1 |     6 | active |
+|  3 | keerthana | keerthana@gmail.com |    345612 | kkeerr   | F      | 2003-09-10 | 2022-03-02 12:21:17 |  4 |          4 |     5 | active |
+|  3 | keerthana | keerthana@gmail.com |    345612 | kkeerr   | F      | 2003-09-10 | 2022-03-02 12:21:17 |  3 |          3 |     7 | active |
+|  3 | keerthana | keerthana@gmail.com |    345612 | kkeerr   | F      | 2003-09-10 | 2022-03-02 12:21:17 |  1 |          1 |     6 | active |
+|  4 | cyrus     | cyrus@gmail.com     |    456123 | ccyyrr   | M      | 2021-08-14 | 2022-03-02 12:23:12 |  4 |          4 |     5 | active |
+|  4 | cyrus     | cyrus@gmail.com     |    456123 | ccyyrr   | M      | 2021-08-14 | 2022-03-02 12:23:12 |  3 |          3 |     7 | active |
+|  4 | cyrus     | cyrus@gmail.com     |    456123 | ccyyrr   | M      | 2021-08-14 | 2022-03-02 12:23:12 |  1 |          1 |     6 | active |
++----+-----------+---------------------+-----------+----------+--------+------------+---------------------+----+------------+-------+--------+
+
+
+Feature 14: Display Student Details for the given input class #
+Class : 5th Standard
+
+mysql> select * from students_list inner join student_class on students_list.id =student_class.student_id where class=5;
++----+-------+-----------------+-----------+----------+--------+------------+---------------------+----+------------+-------+--------+
+| id | name  | email           | mobile_no | password | gender | dob        | created_date        | id | student_id | class | status |
++----+-------+-----------------+-----------+----------+--------+------------+---------------------+----+------------+-------+--------+
+|  4 | cyrus | cyrus@gmail.com |    456123 | ccyyrr   | M      | 2021-08-14 | 2022-03-02 12:23:12 |  4 |          4 |     5 | active |
++----+-------+-----------------+-----------+----------+--------+------------+---------------------+----+------------+-------+--------+
+
+
+Feature 15: Find Class for the given student email id #
+
+mysql> select * from students_list where id in(select student_id from student_class where email="vaish@gmail.com");
++----+-----------+-----------------+-----------+----------+--------+------------+---------------------+
+| id | name      | email           | mobile_no | password | gender | dob        | created_date        |
++----+-----------+-----------------+-----------+----------+--------+------------+---------------------+
+|  1 | vaishnavi | vaish@gmail.com |    123456 | greenary | F      | 2003-08-22 | 2022-03-02 12:16:22 |
++----+-----------+-----------------+-----------+----------+--------+------------+---------------------+
+
+
+Feature 16: Find Students who has not enrolled in a class #
+mysql> select * from students_list left join student_class on students_list.id = student_class.student_id where student_class.class is null;
++----+------+---------------+-----------+----------+--------+------------+---------------------+------+------------+-------+--------+
+| id | name | email         | mobile_no | password | gender | dob        | created_date        | id   | student_id | class | status |
++----+------+---------------+-----------+----------+--------+------------+---------------------+------+------------+-------+--------+
+|  2 | abi  | abi@gmail.com |   1234561 | aabbii   | M      | 2003-08-13 | 2022-03-02 12:18:32 | NULL |       NULL |  NULL | NULL   |
++----+------+---------------+-----------+----------+--------+------------+---------------------+------+------------+-------+--------+
+
+
+Feature 17: Display all students name with class - include both enrolled and not enrolled #
+
+mysql> select * from students_list left join student_class on students_list.id = student_class.student_id;
++----+-----------+---------------------+-----------+----------+--------+------------+---------------------+------+------------+-------+--------+
+| id | name      | email               | mobile_no | password | gender | dob        | created_date        | id   | student_id | class | status |
++----+-----------+---------------------+-----------+----------+--------+------------+---------------------+------+------------+-------+--------+
+|  1 | vaishnavi | vaish@gmail.com     |    123456 | greenary | F      | 2003-08-22 | 2022-03-02 12:16:22 |    1 |          1 |     6 | active |
+|  2 | abi       | abi@gmail.com       |   1234561 | aabbii   | M      | 2003-08-13 | 2022-03-02 12:18:32 | NULL |       NULL |  NULL | NULL   |
+|  3 | keerthana | keerthana@gmail.com |    345612 | kkeerr   | F      | 2003-09-10 | 2022-03-02 12:21:17 |    3 |          3 |     7 | active |
+|  4 | cyrus     | cyrus@gmail.com     |    456123 | ccyyrr   | M      | 2021-08-14 | 2022-03-02 12:23:12 |    4 |          4 |     5 | active |
++----+-----------+---------------------+-----------+----------+--------+------------+---------------------+------+------------+-------+--------+
