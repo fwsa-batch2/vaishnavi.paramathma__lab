@@ -1,0 +1,109 @@
+mysql> desc user;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(30) | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> desc batch;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(30) | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> desc course;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(30) | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> select* from user;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | surya |
+|  2 | dhaya |
++----+-------+
+2 rows in set (0.00 sec)
+
+mysql> select* from batch;
++----+--------+
+| id | name   |
++----+--------+
+|  1 | batch1 |
+|  2 | batch2 |
++----+--------+
+2 rows in set (0.01 sec)
+
+mysql> select* from course;
++----+------+
+| id | name |
++----+------+
+|  1 | html |
+|  2 | css  |
+|  3 | js   |
++----+------+
+3 rows in set (0.00 sec)
+
+mysql> select* from batch_users;
++----+----------+---------+
+| id | batch_id | user_id |
++----+----------+---------+
+|  1 |        1 |       1 |
+|  2 |        2 |       2 |
++----+----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select* from batch_course;
+ERROR 1146 (42S02): Table 'academy.batch_course' doesn't exist
+mysql> select* from batch_course;
+ERROR 1146 (42S02): Table 'academy.batch_course' doesn't exist
+mysql> show tables;
++-------------------+
+| Tables_in_academy |
++-------------------+
+| batch             |
+| batch_courses     |
+| batch_users       |
+| course            |
+| user              |
++-------------------+
+5 rows in set (0.01 sec)
+
+mysql> select* from batch_courses;
++----+----------+-----------+
+| id | batch_id | course_id |
++----+----------+-----------+
+|  1 |        1 |         1 |
+|  2 |        2 |         2 |
++----+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from user inner join batch on user.id = batch.id;
++----+-------+----+--------+
+| id | name  | id | name   |
++----+-------+----+--------+
+|  1 | surya |  1 | batch1 |
+|  2 | dhaya |  2 | batch2 |
++----+-------+----+--------+
+2 rows in set (0.01 sec)
+
+mysql> select course.id,course.name,batch.id,batch.name,user.id,user.name from course,batch,user where course.name="html";
++----+------+----+--------+----+-------+
+| id | name | id | name   | id | name  |
++----+------+----+--------+----+-------+
+|  1 | html |  2 | batch2 |  1 | surya |
+|  1 | html |  1 | batch1 |  1 | surya |
+|  1 | html |  2 | batch2 |  2 | dhaya |
+|  1 | html |  1 | batch1 |  2 | dhaya |
++----+------+----+--------+----+-------+
+4 rows in set (0.00 sec)
+
