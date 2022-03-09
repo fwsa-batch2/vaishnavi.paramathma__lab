@@ -1,0 +1,85 @@
+mysql> use prac_view;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_prac_view |
++---------------------+
+| customer            |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from customer;
++----+-----------+---------+------------------+
+| id | name      | country | email            |
++----+-----------+---------+------------------+
+|  1 | vaishnavi | india   | vaish@gmail.com  |
+|  2 | suzi      | usa     | suzi@gmail.com   |
+|  3 | sahana    | india   | sahana@gmail.com |
++----+-----------+---------+------------------+
+3 rows in set (0.01 sec)
+
+mysql> insert into customer (name,country,email) values ("william","usa","william@gmail.com");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer (name,country,email) values ("keerthana","india","keerthana@gmail.com");
+
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer (name,country,email) values ("abi","india","abi@gmail.com");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer (name,country,email) values ("sophia","usa","sophia@gmail.com");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from customer;
++----+-----------+---------+---------------------+
+| id | name      | country | email               |
++----+-----------+---------+---------------------+
+|  1 | vaishnavi | india   | vaish@gmail.com     |
+|  2 | suzi      | usa     | suzi@gmail.com      |
+|  3 | sahana    | india   | sahana@gmail.com    |
+|  4 | william   | usa     | william@gmail.com   |
+|  5 | keerthana | india   | keerthana@gmail.com |
+|  6 | abi       | india   | abi@gmail.com       |
+|  7 | sophia    | usa     | sophia@gmail.com    |
++----+-----------+---------+---------------------+
+7 rows in set (0.00 sec)
+
+mysql> create view countries as select country,name,email from customers where country = india;
+ERROR 1146 (42S02): Table 'prac_view.customers' doesn't exist
+mysql> create view countries as select country,name,email from customer where country = india;
+ERROR 1054 (42S22): Unknown column 'india' in 'where clause'
+mysql> create view countries as select country,name,email from customer where country = "india";
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from countries;
++---------+-----------+---------------------+
+| country | name      | email               |
++---------+-----------+---------------------+
+| india   | vaishnavi | vaish@gmail.com     |
+| india   | sahana    | sahana@gmail.com    |
+| india   | keerthana | keerthana@gmail.com |
+| india   | abi       | abi@gmail.com       |
++---------+-----------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> create or replace view rm_name as select country, name from customer where country ="india";
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from rm_name;
++---------+-----------+
+| country | name      |
++---------+-----------+
+| india   | vaishnavi |
+| india   | sahana    |
+| india   | keerthana |
+| india   | abi       |
++---------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> rename table countries to only_india;
+Query OK, 0 rows affected (0.01 sec)
+
