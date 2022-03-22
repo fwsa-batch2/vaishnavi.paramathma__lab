@@ -304,8 +304,7 @@ mysql> select * from zookeepers;
 |  1 |        1 |         1 |
 |  2 |        2 |         2 |
 
-
-![eer](https://user-images.githubusercontent.com/93571103/159458353-30edea92-ccca-45cc-8c57-bb4d14f03462.png)
+![paington-er](https://user-images.githubusercontent.com/93571103/159517483-5f8ef122-2319-4297-bcff-d6b71abfacf0.png)
 
 ![20220322_154421](https://user-images.githubusercontent.com/93571103/159458979-4a42e1f7-8ce5-49d4-8c55-13b1fb2d35f8.jpg)
 
