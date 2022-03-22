@@ -275,6 +275,7 @@ mysql> select * from user;
 mysql> insert into user_role values(1,1,2),(2,2,1),(3,3,2),(4,4,2),(5,5,2),(6,6,2);
 
 mysql> select * from user_role;
+![eer](https://user-images.githubusercontent.com/93571103/159457225-eee081c4-afa9-42e5-9a62-c3f7d5d53831.png)
 
 | id | user_id | role_id |
 |:--:|:-------:|:-------:|
@@ -302,3 +303,4 @@ mysql> select * from zookeepers;
 |:--:|:--------:|:---------:|
 |  1 |        1 |         1 |
 |  2 |        2 |         2 |
+![eer](https://user-images.githubusercontent.com/93571103/159458353-30edea92-ccca-45cc-8c57-bb4d14f03462.png)
