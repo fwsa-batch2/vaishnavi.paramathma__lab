@@ -1,5 +1,6 @@
+## paington zoo database
 
-
+#### Creating Database
 
 mysql> create database paingtonzoo;
 
@@ -28,7 +29,7 @@ ph_no bigint not null,date_of_join date not null,status varchar(20) not null,che
 mysql> desc staff;
 
 | Field        | Type        | Null | Key | Default | Extra |
-+:------------:+:-----------:+:----:+:---:+:-------:+:-----:+
+|:------------:|:-----------:|:----:|:---:|:-------:|:-----:|
 | stf_id       | int         | NO   | PRI | NULL    |       |
 | name         | varchar(40) | NO   |     | NULL    |       |
 | email        | varchar(40) | NO   |     | NULL    |       |
@@ -46,7 +47,7 @@ mysql> insert into staff value(3,"vaishali","vaishali@gmail.com","f",3456789012,
 mysql> select * from staff;
 
 | stf_id | name      | email               | gender | ph_no      | date_of_join | status   |
-+:------:+:---------:+:-------------------:+:------:+:----------:+:------------:+:--------:+
+|:------:|:---------:|:-------------------:|:------:|:----------:|:------------:|:--------:|
 |      1 | vaishnavi | vaishnavi@gmail.com | f      | 1234567890 | 2010-08-22   | active   |
 |      2 | abi       | abi@gmail.com       | m      | 2345678901 | 2010-08-13   | active   |
 |      3 | vaishali  | vaishali@gmail.com  | f      | 3456789012 | 2010-08-23   | inactive |
@@ -60,13 +61,13 @@ mysql> insert into zookeepers values(1,1,1),(2,2,2);
 mysql> desc zookeepers;
 
 | Field     | Type | Null | Key | Default | Extra |
-+:---------:+:----:+:----:+:---:+:-------:+:-----:+
+|:---------:|:----:|:----:|:---:|:-------:|:-----:|
 | id        | int  | NO   | PRI | NULL    |       |
 | staff_id  | int  | NO   | MUL | NULL    |       |
 | animal_id | int  | NO   | MUL | NULL    |       |
 
 
-1.table
+#### creating adopters table 
 mysql> create table adopters(id int primary key, adopter_name varchar(40) not null default "zoo maintanance" ,adopter_email varchar(40) not null default "paingtonzoo@gmail.com",ph_no bigint not null,animal_no int not null,foreign key(animal_no) references animal_detail(id));
 
 
@@ -77,18 +78,18 @@ mysql> insert into adopters(id,ph_no,animal_no) value(2,5678901234,2);
 mysql> select * from adopters;
 
 | id | adopter_name    | adopter_email         | ph_no      | animal_no |
-+:--:+:---------------:+:---------------------:+:----------:+:---------:+
+|:--:|:---------------:|:---------------------:|:----------:|:---------:|
 |  1 | poorani         | poorani@gmail.com     | 5678901234 |         1 |
 |  2 | zoo maintanance | paingtonzoo@gmail.com | 5678901234 |         2 |
 
 
 
-2.table
+#### create animal detail table
 
 mysql> desc animal_detail;
 
 | Field            | Type        | Null | Key | Default | Extra |
-+:----------------:+:-----------:+:----:+:---:+:-------:+:-----:+
+|:----------------:|:-----------:|:----:|:---:|:-------:|:-----:|
 | id               | int         | NO   | PRI | NULL    |       |
 | catagory_id      | int         | NO   | MUL | NULL    |       |
 | animal_name      | varchar(50) | NO   |     | NULL    |       |
@@ -99,18 +100,18 @@ mysql> desc animal_detail;
 mysql> select * from animal_detail;
 
 | id | catagory_id | animal_name      | maintaining_fees | user_id |
-+:--:+:-----------:+:----------------:+:----------------:+:-------:+
+|1.table:--:|:-----------:|:----------------:|:----------------:|:-------:|
 |  1 |           2 | chilean flamingo |           200000 |       2 |
 |  2 |           1 | tiger            |          1000000 |       2 |
 |  3 |           3 | titan arum       |           100000 |       2 |
 
 
-3.bookings
+
 
 mysql> desc bookings;
 
 | Field        | Type | Null | Key | Default | Extra |
-+:------------:+:----:+:----:+:---:+:-------:+:-----:+
+|:------------:|:----:|:----:|:---:|:-------:|:-----:|
 | id           | int  | NO   | PRI | NULL    |       |
 | user_id      | int  | NO   | MUL | NULL    |       |
 | booking_date | date | NO   | MUL | NULL    |       |
@@ -122,16 +123,16 @@ mysql> insert into bookings value(2,3,"2022-04-01",2);
 mysql> select * from bookings;
 
 | id | user_id | booking_date | count |
-+:--:+:--------+:------------:+:-----:+
+|:--:|:-------:|:------------:|:-----:|
 |  1 |       1 | 2022-04-22   |     3 |
 |  2 |       3 | 2022-04-01   |     2 |
 
 
-4.category
+#### create catagory table
 mysql> desc categories;
 
 | Field | Type        | Null | Key | Default | Extra |
-+:-----:+:-----------:+:----:+:---:+:-------:+:-----:+
+|:-----:|:-----------:|:----:|:---:|:-------:|:-----:|
 | id    | int         | NO   | PRI | NULL    |       |
 | name  | varchar(40) | NO   | UNI | NULL    |       |
 
@@ -139,14 +140,14 @@ mysql> desc categories;
 mysql> select * from categories;
 
 | id | name             |
-+:--:+:----------------:+
+|:--:|:----------------:|
 |  1 | animal           |
 |  3 | animal and plant |
 |  2 | bird             |
 
 
 
-5.donaters
+#### create donaters table 
 mysql> create table donaters(id int primary key, name varchar(40) not null, email varchar(40) not null,
 ph_no bigint not null,donated_amount int not null, check (donated_amount >10000));
 
@@ -154,7 +155,7 @@ ph_no bigint not null,donated_amount int not null, check (donated_amount >10000)
 mysql> desc donaters;
 
 | Field          | Type        | Null | Key | Default | Extra |
-+:--------------:+:-----------:+:----:+:---:+:-------:+:-----:+
+|:--------------:|:-----------:|:----:|:---:|:-------:|:-----:|
 | id             | int         | NO   | PRI | NULL    |       |
 | name           | varchar(40) | NO   |     | NULL    |       |
 | email          | varchar(40) | NO   |     | NULL    |       |
@@ -167,14 +168,13 @@ mysql> insert into donaters values(1,"chitra","chitra@gmail.com",12366938279280,
 mysql> select * from donaters;
 
 | id | name     | email              | ph_no          | donated_amount |
-+:--:+:--------:+:------------------:+:--------------:+:--------------:+
+|:--:|:--------:|:------------------:|:--------------:|:--------------:|
 |  1 | chitra   | chitra@gmail.com   | 12366938279280 |          11000 |
 |  2 | shyam    | shyam@mail.com     | 78687598749387 |          11000 |
 |  3 | prassana | prassana@gmail.com |   875658735877 |          11000 |
 
 
-6.feedingtime
-
+#### create feeding time for animals table
 mysql> create table feeding_time(id int primary key,animal_no int not null,foreign key(animal_no) references animal_detail(id), feeding_time time not null);
 
 mysql> insert into feeding_time value(1,1,"11:08:33");
