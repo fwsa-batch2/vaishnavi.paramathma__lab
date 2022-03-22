@@ -6,7 +6,7 @@ mysql> create database paingtonzoo;
 mysql> show databases;
 
 | Database           |
-+:------------------:+
+|:------------------:|
 | academy            |
 | freshworks_academy |
 | information_schema |
