@@ -100,7 +100,7 @@ mysql> desc animal_detail;
 mysql> select * from animal_detail;
 
 | id | catagory_id | animal_name      | maintaining_fees | user_id |
-|1.table:--:|:-----------:|:----------------:|:----------------:|:-------:|
+|:--:|:-----------:|:----------------:|:----------------:|:-------:|
 |  1 |           2 | chilean flamingo |           200000 |       2 |
 |  2 |           1 | tiger            |          1000000 |       2 |
 |  3 |           3 | titan arum       |           100000 |       2 |
