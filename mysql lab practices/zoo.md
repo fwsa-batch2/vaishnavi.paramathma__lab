@@ -25,8 +25,10 @@ mysql> show databases;
 | vaishnavi          |
 
 
-```mysql> create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,
-ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));```
+```
+mysql> create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,
+ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));
+```
 
 
 mysql> desc staff;
