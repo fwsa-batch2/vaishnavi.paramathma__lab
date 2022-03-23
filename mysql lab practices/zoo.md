@@ -2,11 +2,11 @@
 
 #### Creating Database
 ```
-mysql> create database paingtonzoo;
+ create database paingtonzoo;
 ```
 
 ```
-mysql> show databases;
+ show databases;
 ```
 
 
@@ -27,12 +27,12 @@ mysql> show databases;
 
 
 ```
-mysql> create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,
+ create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,
 ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));
 ```
 
 ```
-mysql> desc staff;
+ desc staff;
 ```
 | Field        | Type        | Null | Key | Default | Extra |
 |:------------:|:-----------:|:----:|:---:|:-------:|:-----:|
@@ -44,19 +44,19 @@ mysql> desc staff;
 | date_of_join | date        | NO   |     | NULL    |       |
 | status       | varchar(20) | NO   |     | NULL    |       |
 ```
-mysql> insert into staff value(1,"vaishnavi","vaishnavi@gmail.com","f",1234567890,"2010-08-22","active");
+ insert into staff value(1,"vaishnavi","vaishnavi@gmail.com","f",1234567890,"2010-08-22","active");
 ```
 
 ```
-mysql> insert into staff value(2,"abi","abi@gmail.com","m",2345678901,"2010-08-13","active");
+ insert into staff value(2,"abi","abi@gmail.com","m",2345678901,"2010-08-13","active");
 ```
 
 ```
-mysql> insert into staff value(3,"vaishali","vaishali@gmail.com","f",3456789012,"2010-08-23","inactive");
+ insert into staff value(3,"vaishali","vaishali@gmail.com","f",3456789012,"2010-08-23","inactive");
 ```
 
 ```
-mysql> select * from staff;
+ select * from staff;
 ```
 
 | stf_id | name      | email               | gender | ph_no      | date_of_join | status   |
@@ -66,14 +66,14 @@ mysql> select * from staff;
 |      3 | vaishali  | vaishali@gmail.com  | f      | 3456789012 | 2010-08-23   | inactive |
 
 ```
-mysql> create table zookeepers(id int primary key,staff_id int not null,animal_id int not null,foreign key (staff_id) references staff(stf_id),foreign key(animal_id) references animal_detail(id));
+ create table zookeepers(id int primary key,staff_id int not null,animal_id int not null,foreign key (staff_id) references staff(stf_id),foreign key(animal_id) references animal_detail(id));
 ```
 ```
-mysql> insert into zookeepers values(1,1,1),(2,2,2);
+insert into zookeepers values(1,1,1),(2,2,2);
 ```
 
 ```
-mysql> desc zookeepers;
+ desc zookeepers;
 ```
 
 | Field     | Type | Null | Key | Default | Extra |
@@ -85,19 +85,19 @@ mysql> desc zookeepers;
 
 #### creating adopters table 
 ```
-mysql> create table adopters(id int primary key, adopter_name varchar(40) not null default "zoo maintanance" ,adopter_email varchar(40) not null default "paingtonzoo@gmail.com",ph_no bigint not null,animal_no int not null,foreign key(animal_no) references animal_detail(id));
+ create table adopters(id int primary key, adopter_name varchar(40) not null default "zoo maintanance" ,adopter_email varchar(40) not null default "paingtonzoo@gmail.com",ph_no bigint not null,animal_no int not null,foreign key(animal_no) references animal_detail(id));
 ```
 
 ```
-mysql> insert into adopters value(1,"poorani","poorani@gmail.com",5678901234,1);
+ insert into adopters value(1,"poorani","poorani@gmail.com",5678901234,1);
 ```
 
 ```
-mysql> insert into adopters(id,ph_no,animal_no) value(2,5678901234,2);
+ insert into adopters(id,ph_no,animal_no) value(2,5678901234,2);
 ```
 
 ```
-mysql> select * from adopters;
+ select * from adopters;
 ```
 
 | id | adopter_name    | adopter_email         | ph_no      | animal_no |
@@ -109,7 +109,7 @@ mysql> select * from adopters;
 
 #### create animal detail table
 ```
-mysql> desc animal_detail;
+ desc animal_detail;
 ```
 
 | Field            | Type        | Null | Key | Default | Extra |
@@ -121,7 +121,7 @@ mysql> desc animal_detail;
 | user_id          | int         | YES  | MUL | NULL    |       |
 
 ```
-mysql> select * from animal_detail;
+ select * from animal_detail;
 ```
 
 | id | catagory_id | animal_name      | maintaining_fees | user_id |
@@ -133,7 +133,7 @@ mysql> select * from animal_detail;
 
 
 ```
-mysql> desc bookings;
+ desc bookings;
 ```
 | Field        | Type | Null | Key | Default | Extra |
 |:------------:|:----:|:----:|:---:|:-------:|:-----:|
@@ -143,11 +143,11 @@ mysql> desc bookings;
 | count        | int  | NO   |     | NULL    |       |
 
 ```
-mysql> insert into bookings value(2,3,"2022-04-01",2);
+ insert into bookings value(2,3,"2022-04-01",2);
 ```
 
 ```
-mysql> select * from bookings;
+ select * from bookings;
 ```
 | id | user_id | booking_date | count |
 |:--:|:-------:|:------------:|:-----:|
@@ -157,7 +157,7 @@ mysql> select * from bookings;
 
 #### create catagory table
 ```
-mysql> desc categories;
+ desc categories;
 ```
 
 | Field | Type        | Null | Key | Default | Extra |
@@ -166,7 +166,7 @@ mysql> desc categories;
 | name  | varchar(40) | NO   | UNI | NULL    |       |
 
 ```
-mysql> select * from categories;
+ select * from categories;
 ```
 | id | name             |
 |:--:|:----------------:|
@@ -178,11 +178,11 @@ mysql> select * from categories;
 
 #### create donaters table 
 ```
-mysql> create table donaters(id int primary key, name varchar(40) not null, email varchar(40) not null,
+ create table donaters(id int primary key, name varchar(40) not null, email varchar(40) not null,
 ph_no bigint not null,donated_amount int not null, check (donated_amount >10000));
 ```
 ```
-mysql> desc donaters;
+ desc donaters;
 ```
 | Field          | Type        | Null | Key | Default | Extra |
 |:--------------:|:-----------:|:----:|:---:|:-------:|:-----:|
@@ -192,12 +192,12 @@ mysql> desc donaters;
 | ph_no          | bigint      | NO   |     | NULL    |       |
 | donated_amount | int         | NO   |     | NULL    |       |
 ```
-mysql> insert into donaters values(1,"chitra","chitra@gmail.com",12366938279280,11000),(2,"shyam","shyam@mail.com",78687598749387,11000),
+ insert into donaters values(1,"chitra","chitra@gmail.com",12366938279280,11000),(2,"shyam","shyam@mail.com",78687598749387,11000),
 (3,"prassana","prassana@gmail.com",875658735877,11000);
 ````
 
 ```
-mysql> select * from donaters;
+ select * from donaters;
 ```
 | id | name     | email              | ph_no          | donated_amount |
 |:--:|:--------:|:------------------:|:--------------:|:--------------:|
@@ -208,23 +208,23 @@ mysql> select * from donaters;
 
 #### create feeding time for animals table
 ```
-mysql> create table feeding_time(id int primary key,animal_no int not null,foreign key(animal_no) references animal_detail(id), feeding_time time not null);
+ create table feeding_time(id int primary key,animal_no int not null,foreign key(animal_no) references animal_detail(id), feeding_time time not null);
 ```
 
 ```
-mysql> insert into feeding_time value(1,1,"11:08:33");
+ insert into feeding_time value(1,1,"11:08:33");
 ```
 
 ```
-mysql> insert into feeding_time value(2,2,"12:08:33");
+ insert into feeding_time value(2,2,"12:08:33");
 ```
 
 ```
-mysql> insert into feeding_time value(3,3,"14:08:33");
+ insert into feeding_time value(3,3,"14:08:33");
 ```
 
 ```
-mysql> select * from feeding_time;
+ select * from feeding_time;
 ```
 | id | animal_no | feeding_time |
 |:--:|:---------:|:------------:|
@@ -235,15 +235,15 @@ mysql> select * from feeding_time;
 
 ### create table for role
 ```
-mysql> create table role(id int primary key, name varchar(30) not null unique);
+ create table role(id int primary key, name varchar(30) not null unique);
 ```
 
 ```
-mysql> insert into role values(1,"admin"),(2,"customer");
+ insert into role values(1,"admin"),(2,"customer");
 ```
 
 ```
-mysql> select * from role;
+ select * from role;
 ```
 | id | name     |
 |:--:|:--------:|
@@ -253,11 +253,11 @@ mysql> select * from role;
 
 #### create staff table
 ```
-mysql> create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));
+ create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));
 ```
 
 ```
-mysql> desc staff;
+ desc staff;
 ```
 
 | Field        | Type        | Null | Key | Default | Extra |
@@ -270,19 +270,19 @@ mysql> desc staff;
 | date_of_join | date        | NO   |     | NULL    |       |
 | status       | varchar(20) | NO   |     | NULL    |       |
 ```
-mysql> insert into staff value(1,"vaishnavi","vaishnavi@gmail.com","f",1234567890,"2010-08-22","active");
+ insert into staff value(1,"vaishnavi","vaishnavi@gmail.com","f",1234567890,"2010-08-22","active");
 ```
 
 ```
-mysql> insert into staff value(2,"abi","abi@gmail.com","m",2345678901,"2010-08-13","active");
+ insert into staff value(2,"abi","abi@gmail.com","m",2345678901,"2010-08-13","active");
 ```
 
 ```
-mysql> insert into staff value(3,"vaishali","vaishali@gmail.com","f",3456789012,"2010-08-23","inactive");
+ insert into staff value(3,"vaishali","vaishali@gmail.com","f",3456789012,"2010-08-23","inactive");
 ```
 
 ```
-mysql> select * from staff;
+ select * from staff;
 ```
 | stf_id | name      | email               | gender | ph_no      | date_of_join | status   |
 |:------:|:---------:|:-------------------:|:------:|:----------:|:------------:|:--------:|
@@ -293,7 +293,7 @@ mysql> select * from staff;
 
 #### create user table
 ```
-mysql> desc user;
+ desc user;
 ```
 | Field    | Type        | Null | Key | Default | Extra |
 |:--------:|:-----------:|:----:|:---:|:-------:|:-----:|
@@ -304,15 +304,15 @@ mysql> desc user;
 | password | varchar(20) | NO   |     | NULL    |       |
 
 ```
-mysql> insert into user values(3,"abi","abi@gmail.com","2001-08-13","abi345"),(4,"rubi","rubi@gmail.com","2010-09-12","rubi345");
+insert into user values(3,"abi","abi@gmail.com","2001-08-13","abi345"),(4,"rubi","rubi@gmail.com","2010-09-12","rubi345");
 ```
 
 ```
-mysql> insert into user values(5,"suzi","suzi@gmail.com","2009-05-14","suzi567"),(6,"hema","hema@gmail.com","1989-08-16","hema567");
+insert into user values(5,"suzi","suzi@gmail.com","2009-05-14","suzi567"),(6,"hema","hema@gmail.com","1989-08-16","hema567");
 ```
 
 ```
-mysql> select * from user;
+ select * from user;
 ```
 | id | name      | email               | DOB        | password     |
 |:--:|:---------:|:-------------------:|:----------:|:------------:|
@@ -330,11 +330,10 @@ mysql> select * from user;
 ```
 
 ```
-mysql> insert into user_role values(1,1,2),(2,2,1),(3,3,2),(4,4,2),(5,5,2),(6,6,2);
+ insert into user_role values(1,1,2),(2,2,1),(3,3,2),(4,4,2),(5,5,2),(6,6,2);
 ```
 
-```
-mysql> select * from user_role;
+ select * from user_role;
 ```
 
 | id | user_id | role_id |
@@ -349,7 +348,7 @@ mysql> select * from user_role;
 
 #### create zookeeper table
 ```
-mysql> desc zookeepers;
+ desc zookeepers;
 ```
 | Field     | Type | Null | Key | Default | Extra |
 |:---------:|:----:|:----:|:---:|:-------:|:-----:|
@@ -358,7 +357,7 @@ mysql> desc zookeepers;
 | animal_id | int  | NO   | MUL | NULL    |       |
 
 ```
-mysql> select * from zookeepers;
+ select * from zookeepers;
 ```
 | id | staff_id | animal_id |
 |:--:|:--------:|:---------:|
