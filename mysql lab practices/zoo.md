@@ -127,7 +127,7 @@ select * from categories;
 
 
 
-#### create donaters table 
+### create donaters table 
 ```
 create table donaters(id int primary key, name varchar(40) not null, email varchar(40) not null,
 ph_no bigint not null,donated_amount int not null, check (donated_amount >10000));
@@ -161,7 +161,7 @@ select * from donaters;
 |  3 | prassana | prassana@gmail.com |   875658735877 |          11000 |
 
 
-#### create feeding time for animals table
+### create feeding time for animals table
 ```
 create table feeding_time(id int primary key,animal_no int not null,foreign key(animal_no) references animal_detail(id), feeding_time time not null);
 ```
@@ -208,7 +208,7 @@ select * from role;
 |  2 | customer |
 
 
-#### create staff table
+### create staff table
 ```
 create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));
 ```
@@ -252,7 +252,7 @@ select * from staff;
 |      3 | vaishali  | vaishali@gmail.com  | f      | 3456789012 | 2010-08-23   | inactive |
 
 
-#### create user table
+### create user table
 
 #### describing user
 ```
@@ -289,7 +289,7 @@ select * from user;
 |  6 | hema      | hema@gmail.com      | 1989-08-16 | hema567      |
 
 
-#### create user role table
+### create user role table
 ```
 create table user_role(id int primary key,user_id int not null,foreign key(user_id) references user(id),role_id int not null,foreign key(role_id) references role(id));
 ```
@@ -313,7 +313,7 @@ select * from user_role;
 |  6 |       6 |       2 |
 
 
-#### create zookeeper table
+### create zookeeper table
 
 #### describing zookeeper
 ```
