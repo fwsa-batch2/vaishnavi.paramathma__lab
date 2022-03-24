@@ -2,11 +2,11 @@
 
 #### Creating Database
 ```
- create database paingtonzoo;
+create database paingtonzoo;
 ```
 
 ```
- show databases;
+show databases;
 ```
 
 
@@ -27,12 +27,12 @@
 
 
 ```
- create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,
+create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,
 ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));
 ```
 
 ```
- desc staff;
+desc staff;
 ```
 | Field        | Type        | Null | Key | Default | Extra |
 |:------------:|:-----------:|:----:|:---:|:-------:|:-----:|
@@ -44,19 +44,19 @@ ph_no bigint not null,date_of_join date not null,status varchar(20) not null,che
 | date_of_join | date        | NO   |     | NULL    |       |
 | status       | varchar(20) | NO   |     | NULL    |       |
 ```
- insert into staff value(1,"vaishnavi","vaishnavi@gmail.com","f",1234567890,"2010-08-22","active");
+insert into staff value(1,"vaishnavi","vaishnavi@gmail.com","f",1234567890,"2010-08-22","active");
 ```
 
 ```
- insert into staff value(2,"abi","abi@gmail.com","m",2345678901,"2010-08-13","active");
+insert into staff value(2,"abi","abi@gmail.com","m",2345678901,"2010-08-13","active");
 ```
 
 ```
- insert into staff value(3,"vaishali","vaishali@gmail.com","f",3456789012,"2010-08-23","inactive");
+insert into staff value(3,"vaishali","vaishali@gmail.com","f",3456789012,"2010-08-23","inactive");
 ```
 
 ```
- select * from staff;
+select * from staff;
 ```
 
 | stf_id | name      | email               | gender | ph_no      | date_of_join | status   |
@@ -66,14 +66,14 @@ ph_no bigint not null,date_of_join date not null,status varchar(20) not null,che
 |      3 | vaishali  | vaishali@gmail.com  | f      | 3456789012 | 2010-08-23   | inactive |
 
 ```
- create table zookeepers(id int primary key,staff_id int not null,animal_id int not null,foreign key (staff_id) references staff(stf_id),foreign key(animal_id) references animal_detail(id));
+create table zookeepers(id int primary key,staff_id int not null,animal_id int not null,foreign key (staff_id) references staff(stf_id),foreign key(animal_id) references animal_detail(id));
 ```
 ```
 insert into zookeepers values(1,1,1),(2,2,2);
 ```
 
 ```
- desc zookeepers;
+desc zookeepers;
 ```
 
 | Field     | Type | Null | Key | Default | Extra |
@@ -85,19 +85,19 @@ insert into zookeepers values(1,1,1),(2,2,2);
 
 #### creating adopters table 
 ```
- create table adopters(id int primary key, adopter_name varchar(40) not null default "zoo maintanance" ,adopter_email varchar(40) not null default "paingtonzoo@gmail.com",ph_no bigint not null,animal_no int not null,foreign key(animal_no) references animal_detail(id));
+create table adopters(id int primary key, adopter_name varchar(40) not null default "zoo maintanance" ,adopter_email varchar(40) not null default "paingtonzoo@gmail.com",ph_no bigint not null,animal_no int not null,foreign key(animal_no) references animal_detail(id));
 ```
 
 ```
- insert into adopters value(1,"poorani","poorani@gmail.com",5678901234,1);
+insert into adopters value(1,"poorani","poorani@gmail.com",5678901234,1);
 ```
 
 ```
- insert into adopters(id,ph_no,animal_no) value(2,5678901234,2);
+insert into adopters(id,ph_no,animal_no) value(2,5678901234,2);
 ```
 
 ```
- select * from adopters;
+select * from adopters;
 ```
 
 | id | adopter_name    | adopter_email         | ph_no      | animal_no |
@@ -109,7 +109,7 @@ insert into zookeepers values(1,1,1),(2,2,2);
 
 #### create animal detail table
 ```
- desc animal_detail;
+desc animal_detail;
 ```
 
 | Field            | Type        | Null | Key | Default | Extra |
@@ -121,7 +121,7 @@ insert into zookeepers values(1,1,1),(2,2,2);
 | user_id          | int         | YES  | MUL | NULL    |       |
 
 ```
- select * from animal_detail;
+select * from animal_detail;
 ```
 
 | id | catagory_id | animal_name      | maintaining_fees | user_id |
@@ -133,7 +133,7 @@ insert into zookeepers values(1,1,1),(2,2,2);
 
 
 ```
- desc bookings;
+desc bookings;
 ```
 | Field        | Type | Null | Key | Default | Extra |
 |:------------:|:----:|:----:|:---:|:-------:|:-----:|
@@ -143,11 +143,11 @@ insert into zookeepers values(1,1,1),(2,2,2);
 | count        | int  | NO   |     | NULL    |       |
 
 ```
- insert into bookings value(2,3,"2022-04-01",2);
+insert into bookings value(2,3,"2022-04-01",2);
 ```
 
 ```
- select * from bookings;
+select * from bookings;
 ```
 | id | user_id | booking_date | count |
 |:--:|:-------:|:------------:|:-----:|
@@ -157,7 +157,7 @@ insert into zookeepers values(1,1,1),(2,2,2);
 
 #### create catagory table
 ```
- desc categories;
+desc categories;
 ```
 
 | Field | Type        | Null | Key | Default | Extra |
@@ -166,7 +166,7 @@ insert into zookeepers values(1,1,1),(2,2,2);
 | name  | varchar(40) | NO   | UNI | NULL    |       |
 
 ```
- select * from categories;
+select * from categories;
 ```
 | id | name             |
 |:--:|:----------------:|
@@ -178,7 +178,7 @@ insert into zookeepers values(1,1,1),(2,2,2);
 
 #### create donaters table 
 ```
- create table donaters(id int primary key, name varchar(40) not null, email varchar(40) not null,
+create table donaters(id int primary key, name varchar(40) not null, email varchar(40) not null,
 ph_no bigint not null,donated_amount int not null, check (donated_amount >10000));
 ```
 ```
@@ -192,12 +192,12 @@ ph_no bigint not null,donated_amount int not null, check (donated_amount >10000)
 | ph_no          | bigint      | NO   |     | NULL    |       |
 | donated_amount | int         | NO   |     | NULL    |       |
 ```
- insert into donaters values(1,"chitra","chitra@gmail.com",12366938279280,11000),(2,"shyam","shyam@mail.com",78687598749387,11000),
+insert into donaters values(1,"chitra","chitra@gmail.com",12366938279280,11000),(2,"shyam","shyam@mail.com",78687598749387,11000),
 (3,"prassana","prassana@gmail.com",875658735877,11000);
 ````
 
 ```
- select * from donaters;
+select * from donaters;
 ```
 | id | name     | email              | ph_no          | donated_amount |
 |:--:|:--------:|:------------------:|:--------------:|:--------------:|
@@ -208,11 +208,11 @@ ph_no bigint not null,donated_amount int not null, check (donated_amount >10000)
 
 #### create feeding time for animals table
 ```
- create table feeding_time(id int primary key,animal_no int not null,foreign key(animal_no) references animal_detail(id), feeding_time time not null);
+create table feeding_time(id int primary key,animal_no int not null,foreign key(animal_no) references animal_detail(id), feeding_time time not null);
 ```
 
 ```
- insert into feeding_time value(1,1,"11:08:33");
+insert into feeding_time value(1,1,"11:08:33");
 ```
 
 ```
@@ -220,11 +220,11 @@ ph_no bigint not null,donated_amount int not null, check (donated_amount >10000)
 ```
 
 ```
- insert into feeding_time value(3,3,"14:08:33");
+insert into feeding_time value(3,3,"14:08:33");
 ```
 
 ```
- select * from feeding_time;
+select * from feeding_time;
 ```
 | id | animal_no | feeding_time |
 |:--:|:---------:|:------------:|
@@ -235,15 +235,15 @@ ph_no bigint not null,donated_amount int not null, check (donated_amount >10000)
 
 ### create table for role
 ```
- create table role(id int primary key, name varchar(30) not null unique);
+create table role(id int primary key, name varchar(30) not null unique);
 ```
 
 ```
- insert into role values(1,"admin"),(2,"customer");
+insert into role values(1,"admin"),(2,"customer");
 ```
 
 ```
- select * from role;
+select * from role;
 ```
 | id | name     |
 |:--:|:--------:|
@@ -253,11 +253,11 @@ ph_no bigint not null,donated_amount int not null, check (donated_amount >10000)
 
 #### create staff table
 ```
- create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));
+create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));
 ```
 
 ```
- desc staff;
+desc staff;
 ```
 
 | Field        | Type        | Null | Key | Default | Extra |
@@ -270,19 +270,19 @@ ph_no bigint not null,donated_amount int not null, check (donated_amount >10000)
 | date_of_join | date        | NO   |     | NULL    |       |
 | status       | varchar(20) | NO   |     | NULL    |       |
 ```
- insert into staff value(1,"vaishnavi","vaishnavi@gmail.com","f",1234567890,"2010-08-22","active");
+insert into staff value(1,"vaishnavi","vaishnavi@gmail.com","f",1234567890,"2010-08-22","active");
 ```
 
 ```
- insert into staff value(2,"abi","abi@gmail.com","m",2345678901,"2010-08-13","active");
+insert into staff value(2,"abi","abi@gmail.com","m",2345678901,"2010-08-13","active");
 ```
 
 ```
- insert into staff value(3,"vaishali","vaishali@gmail.com","f",3456789012,"2010-08-23","inactive");
+insert into staff value(3,"vaishali","vaishali@gmail.com","f",3456789012,"2010-08-23","inactive");
 ```
 
 ```
- select * from staff;
+select * from staff;
 ```
 | stf_id | name      | email               | gender | ph_no      | date_of_join | status   |
 |:------:|:---------:|:-------------------:|:------:|:----------:|:------------:|:--------:|
@@ -293,7 +293,7 @@ ph_no bigint not null,donated_amount int not null, check (donated_amount >10000)
 
 #### create user table
 ```
- desc user;
+desc user;
 ```
 | Field    | Type        | Null | Key | Default | Extra |
 |:--------:|:-----------:|:----:|:---:|:-------:|:-----:|
@@ -312,7 +312,7 @@ insert into user values(5,"suzi","suzi@gmail.com","2009-05-14","suzi567"),(6,"he
 ```
 
 ```
- select * from user;
+select * from user;
 ```
 | id | name      | email               | DOB        | password     |
 |:--:|:---------:|:-------------------:|:----------:|:------------:|
@@ -326,14 +326,15 @@ insert into user values(5,"suzi","suzi@gmail.com","2009-05-14","suzi567"),(6,"he
 
 #### create user role table
 ```
- create table user_role(id int primary key,user_id int not null,foreign key(user_id) references user(id),role_id int not null,foreign key(role_id) references role(id));
+create table user_role(id int primary key,user_id int not null,foreign key(user_id) references user(id),role_id int not null,foreign key(role_id) references role(id));
 ```
 
 ```
- insert into user_role values(1,1,2),(2,2,1),(3,3,2),(4,4,2),(5,5,2),(6,6,2);
+insert into user_role values(1,1,2),(2,2,1),(3,3,2),(4,4,2),(5,5,2),(6,6,2);
 ```
 
- select * from user_role;
+```
+select * from user_role;
 ```
 
 | id | user_id | role_id |
@@ -348,17 +349,18 @@ insert into user values(5,"suzi","suzi@gmail.com","2009-05-14","suzi567"),(6,"he
 
 #### create zookeeper table
 ```
- desc zookeepers;
+desc zookeepers;
 ```
 | Field     | Type | Null | Key | Default | Extra |
 |:---------:|:----:|:----:|:---:|:-------:|:-----:|
 | id        | int  | NO   | PRI | NULL    |       |
 | staff_id  | int  | NO   | MUL | NULL    |       |
 | animal_id | int  | NO   | MUL | NULL    |       |
+```
+select * from zookeepers;
+```
 
-```
- select * from zookeepers;
-```
+
 | id | staff_id | animal_id |
 |:--:|:--------:|:---------:|
 |  1 |        1 |         1 |
