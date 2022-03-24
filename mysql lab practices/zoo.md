@@ -31,7 +31,7 @@ show databases;
 ```
 create table adopters(id int primary key, adopter_name varchar(40) not null default "zoo maintanance" ,adopter_email varchar(40) not null default "paingtonzoo@gmail.com",ph_no bigint not null,animal_no int not null,foreign key(animal_no) references animal_detail(id));
 ```
-
+#### inserting into adopters
 ```
 insert into adopters value(1,"poorani","poorani@gmail.com",5678901234,1);
 ```
@@ -74,10 +74,10 @@ select * from animal_detail;
 |  2 |           1 | tiger            |          1000000 |       2 |
 |  3 |           3 | titan arum       |           100000 |       2 |
 
-###creating booking table 
+### creating booking table 
 
 
-####describing bookings
+#### describing bookings
 ```
 desc bookings;
 ```
@@ -103,10 +103,10 @@ select * from bookings;
 |  2 |       3 | 2022-04-01   |     2 |
 
 
-###create catagory table
+### create catagory table
 
 
-####describing categories table
+#### describing categories table
 ```
 desc categories;
 ```
@@ -133,7 +133,7 @@ create table donaters(id int primary key, name varchar(40) not null, email varch
 ph_no bigint not null,donated_amount int not null, check (donated_amount >10000));
 ```
 
-####describing  donaters
+#### describing  donaters
 ```
  desc donaters;
 ```
@@ -145,7 +145,7 @@ ph_no bigint not null,donated_amount int not null, check (donated_amount >10000)
 | ph_no          | bigint      | NO   |     | NULL    |       |
 | donated_amount | int         | NO   |     | NULL    |       |
 
-####inserting into donaters
+#### inserting into donaters
 ```
 insert into donaters values(1,"chitra","chitra@gmail.com",12366938279280,11000),(2,"shyam","shyam@mail.com",78687598749387,11000),
 (3,"prassana","prassana@gmail.com",875658735877,11000);
@@ -166,6 +166,7 @@ select * from donaters;
 create table feeding_time(id int primary key,animal_no int not null,foreign key(animal_no) references animal_detail(id), feeding_time time not null);
 ```
 
+#### inserting into feeding time
 ```
 insert into feeding_time value(1,1,"11:08:33");
 ```
@@ -193,6 +194,7 @@ select * from feeding_time;
 create table role(id int primary key, name varchar(30) not null unique);
 ```
 
+#### inserting into role
 ```
 insert into role values(1,"admin"),(2,"customer");
 ```
@@ -211,6 +213,8 @@ select * from role;
 create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));
 ```
 
+
+#### describing staff
 ```
 desc staff;
 ```
@@ -224,6 +228,8 @@ desc staff;
 | ph_no        | bigint      | NO   |     | NULL    |       |
 | date_of_join | date        | NO   |     | NULL    |       |
 | status       | varchar(20) | NO   |     | NULL    |       |
+
+#### inserting into staff
 ```
 insert into staff value(1,"vaishnavi","vaishnavi@gmail.com","f",1234567890,"2010-08-22","active");
 ```
@@ -247,6 +253,8 @@ select * from staff;
 
 
 #### create user table
+
+#### describing user
 ```
 desc user;
 ```
@@ -258,6 +266,8 @@ desc user;
 | DOB      | date        | NO   |     | NULL    |       |
 | password | varchar(20) | NO   |     | NULL    |       |
 
+
+#### inserting into user
 ```
 insert into user values(3,"abi","abi@gmail.com","2001-08-13","abi345"),(4,"rubi","rubi@gmail.com","2010-09-12","rubi345");
 ```
@@ -284,6 +294,7 @@ select * from user;
 create table user_role(id int primary key,user_id int not null,foreign key(user_id) references user(id),role_id int not null,foreign key(role_id) references role(id));
 ```
 
+#### inserting into user role
 ```
 insert into user_role values(1,1,2),(2,2,1),(3,3,2),(4,4,2),(5,5,2),(6,6,2);
 ```
@@ -303,6 +314,8 @@ select * from user_role;
 
 
 #### create zookeeper table
+
+#### describing zookeeper
 ```
 desc zookeepers;
 ```
