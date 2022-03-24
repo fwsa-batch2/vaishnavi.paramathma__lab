@@ -26,64 +26,8 @@ show databases;
 | vaishnavi          |
 
 
-```
-create table staff(stf_id int primary key,name varchar(40) not null,email varchar(40) not null,gender char(1) not null,
-ph_no bigint not null,date_of_join date not null,status varchar(20) not null,check(status in ("active","inactive")));
-```
 
-```
-desc staff;
-```
-| Field        | Type        | Null | Key | Default | Extra |
-|:------------:|:-----------:|:----:|:---:|:-------:|:-----:|
-| stf_id       | int         | NO   | PRI | NULL    |       |
-| name         | varchar(40) | NO   |     | NULL    |       |
-| email        | varchar(40) | NO   |     | NULL    |       |
-| gender       | char(1)     | NO   |     | NULL    |       |
-| ph_no        | bigint      | NO   |     | NULL    |       |
-| date_of_join | date        | NO   |     | NULL    |       |
-| status       | varchar(20) | NO   |     | NULL    |       |
-```
-insert into staff value(1,"vaishnavi","vaishnavi@gmail.com","f",1234567890,"2010-08-22","active");
-```
-
-```
-insert into staff value(2,"abi","abi@gmail.com","m",2345678901,"2010-08-13","active");
-```
-
-```
-insert into staff value(3,"vaishali","vaishali@gmail.com","f",3456789012,"2010-08-23","inactive");
-```
-
-```
-select * from staff;
-```
-
-| stf_id | name      | email               | gender | ph_no      | date_of_join | status   |
-|:------:|:---------:|:-------------------:|:------:|:----------:|:------------:|:--------:|
-|      1 | vaishnavi | vaishnavi@gmail.com | f      | 1234567890 | 2010-08-22   | active   |
-|      2 | abi       | abi@gmail.com       | m      | 2345678901 | 2010-08-13   | active   |
-|      3 | vaishali  | vaishali@gmail.com  | f      | 3456789012 | 2010-08-23   | inactive |
-
-```
-create table zookeepers(id int primary key,staff_id int not null,animal_id int not null,foreign key (staff_id) references staff(stf_id),foreign key(animal_id) references animal_detail(id));
-```
-```
-insert into zookeepers values(1,1,1),(2,2,2);
-```
-
-```
-desc zookeepers;
-```
-
-| Field     | Type | Null | Key | Default | Extra |
-|:---------:|:----:|:----:|:---:|:-------:|:-----:|
-| id        | int  | NO   | PRI | NULL    |       |
-| staff_id  | int  | NO   | MUL | NULL    |       |
-| animal_id | int  | NO   | MUL | NULL    |       |
-
-
-#### creating adopters table 
+### creating adopters table 
 ```
 create table adopters(id int primary key, adopter_name varchar(40) not null default "zoo maintanance" ,adopter_email varchar(40) not null default "paingtonzoo@gmail.com",ph_no bigint not null,animal_no int not null,foreign key(animal_no) references animal_detail(id));
 ```
@@ -107,7 +51,7 @@ select * from adopters;
 
 
 
-#### create animal detail table
+### creating animal detail table
 ```
 desc animal_detail;
 ```
@@ -130,8 +74,10 @@ select * from animal_detail;
 |  2 |           1 | tiger            |          1000000 |       2 |
 |  3 |           3 | titan arum       |           100000 |       2 |
 
+###creating booking table 
 
 
+####describing bookings
 ```
 desc bookings;
 ```
@@ -142,6 +88,8 @@ desc bookings;
 | booking_date | date | NO   | MUL | NULL    |       |
 | count        | int  | NO   |     | NULL    |       |
 
+
+#### inserting into bookings
 ```
 insert into bookings value(2,3,"2022-04-01",2);
 ```
@@ -155,7 +103,10 @@ select * from bookings;
 |  2 |       3 | 2022-04-01   |     2 |
 
 
-#### create catagory table
+###create catagory table
+
+
+####describing categories table
 ```
 desc categories;
 ```
@@ -181,6 +132,8 @@ select * from categories;
 create table donaters(id int primary key, name varchar(40) not null, email varchar(40) not null,
 ph_no bigint not null,donated_amount int not null, check (donated_amount >10000));
 ```
+
+####describing  donaters
 ```
  desc donaters;
 ```
@@ -191,6 +144,8 @@ ph_no bigint not null,donated_amount int not null, check (donated_amount >10000)
 | email          | varchar(40) | NO   |     | NULL    |       |
 | ph_no          | bigint      | NO   |     | NULL    |       |
 | donated_amount | int         | NO   |     | NULL    |       |
+
+####inserting into donaters
 ```
 insert into donaters values(1,"chitra","chitra@gmail.com",12366938279280,11000),(2,"shyam","shyam@mail.com",78687598749387,11000),
 (3,"prassana","prassana@gmail.com",875658735877,11000);
