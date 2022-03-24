@@ -364,6 +364,11 @@ insert into user values(5,"suzi","suzi@gmail.com","2009-05-14","suzi567"),(6,"he
 |  1 |        1 |         1 |
 |  2 |        2 |         2 |
 
-![paington-er](https://user-images.githubusercontent.com/93571103/159517483-5f8ef122-2319-4297-bcff-d6b71abfacf0.png)
+### er diagram
+![paington-er](https://user-images.githubusercontent.com/93571103/159881587-e2d63fe7-a70c-4f09-9b5b-0432250fa0c0.png)
 
-![eer](https://user-images.githubusercontent.com/93571103/159520792-e083a268-6ada-41d6-ac5e-d05fd1e91586.png)
+### eer diagram
+
+![eer](https://user-images.githubusercontent.com/93571103/159881970-cf2274be-302b-48bc-8924-d5bedaa36da3.png)
+
+
