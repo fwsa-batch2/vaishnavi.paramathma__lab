@@ -365,7 +365,8 @@ insert into user values(5,"suzi","suzi@gmail.com","2009-05-14","suzi567"),(6,"he
 |  2 |        2 |         2 |
 
 ### er diagram
-![paington-er](https://user-images.githubusercontent.com/93571103/159881587-e2d63fe7-a70c-4f09-9b5b-0432250fa0c0.png)
+![paington-er](https://user-images.githubusercontent.com/93571103/159882409-f5b54a2f-d531-4b5f-8520-11e523b9db60.png)
+
 
 ### eer diagram
 
