@@ -1,0 +1,110 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| abi                |
+| academy            |
+| freshworks_academy |
+| information_schema |
+| mysql              |
+| paingtonzoo        |
+| performance_schema |
+| prac_view          |
+| subqu              |
+| sys                |
+| united             |
+| usquare_school     |
+| vaishnavi          |
++--------------------+
+13 rows in set (0.01 sec)
+
+mysql> use united;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_united |
++------------------+
+| aspirants        |
+| blazers          |
+| class_a          |
+| class_b          |
+| products         |
+| seller           |
+| tendots          |
+| uSquare          |
+| vegetable        |
++------------------+
+9 rows in set (0.00 sec)
+
+mysql> set autocommit =0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create table students(id int  primary key,name varchar(30));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_united |
++------------------+
+| aspirants        |
+| blazers          |
+| class_a          |
+| class_b          |
+| products         |
+| seller           |
+| students         |
+| tendots          |
+| uSquare          |
+| vegetable        |
++------------------+
+10 rows in set (0.01 sec)
+
+mysql> innsert into students values(1,"vaishu"),(2,"vaishnavi");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'innsert into students values(1,"vaishu"),(2,"vaishnavi")' at line 1
+mysql> insert into students values(1,"vaishu"),(2,"vaishnavi");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from students;
++----+-----------+
+| id | name      |
++----+-----------+
+|  1 | vaishu    |
+|  2 | vaishnavi |
++----+-----------+
+2 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from students;
+Empty set (0.00 sec)
+
+mysql> insert into students values(1,"vaishu"),(2,"vaishnavi");
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from students;
++----+-----------+
+| id | name      |
++----+-----------+
+|  1 | vaishu    |
+|  2 | vaishnavi |
++----+-----------+
+2 rows in set (0.00 sec)
+
