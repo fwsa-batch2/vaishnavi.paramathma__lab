@@ -1,3 +1,5 @@
+// ternary operator
+
 public class exercise4{
     public static void main(String[] args){
         int a=12,b=9, num1, num2;
