@@ -1,4 +1,4 @@
-//else if statement  
+// if else statement  
  
 import java.util.Scanner;
 
