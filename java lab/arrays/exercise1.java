@@ -9,7 +9,7 @@ public static void main(String[] args){
     int num2[] = {63,36,89,73,92};
 
 
-    int num3 = new int[2][3];
+   // int num3 = new int[2][3];
     
  
 System.out.println(num1[2]);
