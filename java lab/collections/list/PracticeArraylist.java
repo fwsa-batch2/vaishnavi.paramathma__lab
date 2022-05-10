@@ -36,14 +36,37 @@ public class PracticeArraylist {
         ArrayList c= (ArrayList) a.clone(); 
         System.out.println(c);
 
+        c.addAll(a)
         System.out.println(a);
 
-        //b.removeIf(n -> (n.charAt(0)=="d"));
+        //b.removeIf(n -> (n.charAt(0)=='d'));
+        b.removeIf(n -> (n.charAt(0)=='d'));
 
-        Comparator<String> comp=Collections.reverseOrder();
-        System.out.println(comp);
+    //    Arrays.sort(b,comp);
+    System.out.println("Reversed B : ");
+    Collections.reverse(b);
 
-          
+    
+       for (String num : b) {
+           System.out.println(num);
+       }
+
+       b.forEach(n-> System.out.println(n));
+
+       b.replaceAll(e -> e.toLowerCase());
+       b.forEach(n -> System.out.println(n));
+
+       ListIterator<String> iter= b.listIterator();
+       System.out.println("after using list iterator");
+       if(iter.hasNext()){
+           System.out.println("value is "+ iter.next());
+       }
+       else {
+           System.out.println("exception thrown");
+       }
+
+       
+
 
 
 
