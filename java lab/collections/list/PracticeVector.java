@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class PracticeVector {
     public static void main(String[] args) {
-        Vector<String> fruits =new Vector<>();
+        Vector<String> fruits = new Vector<>();
 
         fruits.add("Apple");
         fruits.add("orange");
@@ -15,15 +15,25 @@ public class PracticeVector {
         fruits.add("strawberry");
         fruits.add("banana");
         System.out.println(fruits);
-        System.out.println("cloned"+fruits.clone());
-        System.out.println("size "+fruits.size());
+        System.out.println("cloned" + fruits.clone());
+        System.out.println("size " + fruits.size());
 
-        List<String> subList=fruits.subList(1,4);
-        System.out.println("sublist  "+ subList);
+        List<String> subList = fruits.subList(1, 4);
+        System.out.println("sublist  " + subList);
 
         // for (String sub:fruits);
         // System.out.println("subtype "+fruits);
 
-        fruits.forEach(n-> System.out.println(n));
+        fruits.forEach(n -> System.out.println(n));
+        fruits.removeElement("orange");
+        System.out.println(fruits);
+        
+        fruits.removeElementAt(1);
+        System.out.println(fruits);
+
+        fruits.trimToSize();
+        System.out.println("trim to size"+fruits);
+
+
     }
 }
