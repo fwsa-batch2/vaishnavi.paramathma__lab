@@ -17,7 +17,6 @@ public class PracticeStack {
         System.out.println(usquare);
         usquare.peek();
         System.out.println(usquare);
-
         
 
     }
