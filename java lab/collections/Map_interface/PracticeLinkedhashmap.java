@@ -8,10 +8,14 @@ public class PracticeLinkedhashmap {
                 return size()>MAX;
             }
         };
+        NavigableMap<Integer, String> treemaphead =new NavigableMap<Integer,String>();
+            
+        
         rank.put("vaishu",1);
         rank.put("vaishnavi",2);
         rank.put("vp",3);
         System.out.println(rank);
+
 
         Set set= rank.entrySet();
         System.out.println("set value"+set);
@@ -25,6 +29,9 @@ public class PracticeLinkedhashmap {
 
         // collections.sort(rank());
         System.out.println(rank);
+
+       // NavigableSet dset = rank.descendingKeySet(); 
+       //treemaphead = rank.headMap("vp",true);
     }
    
 
