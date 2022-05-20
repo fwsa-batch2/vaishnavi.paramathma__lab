@@ -1,5 +1,9 @@
 abstract class aa {
     abstract void cat();
+    void draw(){
+        String a="Draw";
+        System.out.println(a);
+    }
 }
 class bb extends aa{
     void cat(){

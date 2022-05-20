@@ -36,7 +36,7 @@ public class PracticeArraylist {
         ArrayList c= (ArrayList) a.clone(); 
         System.out.println(c);
 
-        c.addAll(a)
+        c.addAll(a);
         System.out.println(a);
 
         //b.removeIf(n -> (n.charAt(0)=='d'));

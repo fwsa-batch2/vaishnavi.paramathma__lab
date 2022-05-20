@@ -1,5 +1,7 @@
 interface drawing{
     void painting();
+
+    
 }
 class pencildraw implements drawing{
     public void painting(){

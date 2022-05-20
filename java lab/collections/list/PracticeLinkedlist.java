@@ -10,7 +10,7 @@ public class PracticeLinkedlist {
      num1.add(2);
      num1.add(3);
      num1.add(4);
-     num1.add(5);
+     num1.add(8);
      num1.add(6);
      num1.add(3,7);
      num1.addFirst(0);

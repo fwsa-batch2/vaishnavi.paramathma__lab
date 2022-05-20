@@ -13,7 +13,7 @@ public class practicePriorityqueue {
        System.out.println("added elements in pqueue is"+pqueue);
        System.out.println("offer  "+pqueue.offer(22));
        System.out.println("element at first   "+ pqueue.element());
-       System.out.println("element at first   "+ pqueue.peek() );
+       System.out.println("peek at first   "+ pqueue.peek() );
        System.out.println("poll the element  "+ pqueue.poll());
        System.out.println("added elements in pqueue is"+pqueue);
        System.out.println("remove  "+ pqueue.remove());
