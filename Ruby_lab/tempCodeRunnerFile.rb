@@ -1,0 +1,1 @@
+new_nums = nums.map {|number| number * 125 }

@@ -44,17 +44,17 @@
 
 #case statement
 
-# $age=gets.chomp.to_i
-# case $age
-# when 0..2
-#     puts "baby"
-# when 3..5
-#     puts "child"
-# when 6..10
-#     puts "young"
-# else 
-#     puts "adult"
-# end
+$age=gets.chomp.to_i
+case $age
+when 0..2
+    puts "baby"
+when 3..5
+    puts "child"
+when 6..10
+    puts "young"
+else 
+    puts "adult"
+end
 
 
 #if modifier
